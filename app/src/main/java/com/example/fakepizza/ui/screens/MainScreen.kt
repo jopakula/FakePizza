@@ -26,9 +26,9 @@ fun MainScreen() {
         Scaffold(
             bottomBar = {
                 BottomNavigation {
-                    TabNavigatorItem(BasketTab)
                     TabNavigatorItem(MenuTab)
                     TabNavigatorItem(ProfileTab)
+                    TabNavigatorItem(BasketTab)
                 }
             },
             content = { paddingValues ->
