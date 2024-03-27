@@ -51,6 +51,11 @@ android {
 
 dependencies {
 
+    implementation("com.google.accompanist:accompanist-coil:0.15.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     implementation("me.onebone:toolbar-compose:2.3.5")
 
     implementation("androidx.compose.material:material:1.4.2")

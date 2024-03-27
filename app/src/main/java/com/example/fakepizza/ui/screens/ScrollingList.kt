@@ -15,6 +15,9 @@ fun ScrollingList() {
     val scrollState = rememberLazyListState()
 
     LazyColumn(
+        modifier =
+            Modifier
+                .padding(top = 50.dp),
         state = scrollState,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
