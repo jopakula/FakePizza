@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.fakepizza.data.http_client.HttpClient
@@ -40,8 +41,10 @@ fun TabsList(onCategorySelected: (String) -> Unit) {
 
     if (tabs.isNotEmpty()) {
         ScrollableTabRow(
+            modifier =
+                Modifier
+                    .fillMaxWidth(),
             selectedTabIndex = selectedTabIndex,
-            modifier = Modifier.fillMaxWidth(),
             edgePadding = 8.dp,
             indicator = { },
         ) {
@@ -50,6 +53,7 @@ fun TabsList(onCategorySelected: (String) -> Unit) {
                     modifier =
                         Modifier
                             .padding(8.dp)
+                            .shadow(elevation = 6.dp)
                             .clip(RoundedCornerShape(6.dp))
                             .background(if (selectedTabIndex == index) SelectedBackgroundColor else Color.White),
                     selected = selectedTabIndex == index,

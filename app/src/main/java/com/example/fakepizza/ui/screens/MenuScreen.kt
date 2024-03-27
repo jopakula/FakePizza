@@ -29,7 +29,7 @@ class MenuScreen : Screen {
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .background(Color.LightGray),
+                    .background(Color.White),
         ) {
             val state = rememberCollapsingToolbarScaffoldState()
             var selectedCategory by remember { mutableStateOf("") }
