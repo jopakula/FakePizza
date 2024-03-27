@@ -1,84 +1,57 @@
 package com.example.fakepizza.ui.screens.tab
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import com.example.fakepizza.R
+import com.example.fakepizza.ui.screens.HidingList
+import com.example.fakepizza.ui.screens.ScrollingList
+import com.example.fakepizza.ui.screens.TitleList
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
+@Suppress("ktlint:standard:function-naming")
 class MenuScreen : Screen {
     @Composable
     override fun Content() {
-        var expanded by remember { mutableStateOf(false) }
-        var selectedCity by remember { mutableStateOf("Москва") }
-        val cities = listOf("Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Тверь")
-
         Column(
             modifier =
                 Modifier
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .background(Color.LightGray),
         ) {
-            Row(
+            val state = rememberCollapsingToolbarScaffoldState()
+
+            CollapsingToolbarScaffold(
                 modifier =
                     Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Row(modifier = Modifier.weight(1F)) {
-                    ClickableText(
-                        text = AnnotatedString(selectedCity),
-                        onClick = { expanded = true },
-                    )
-                    Icon(
+                        .fillMaxWidth(),
+                state = state,
+                scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
+                toolbar = {
+                    Box(
                         modifier =
                             Modifier
-                                .clickable { expanded = true },
-                        imageVector = if (expanded) Icons.Filled.KeyboardArrowDown else Icons.Filled.KeyboardArrowRight,
-                        contentDescription = null,
+                                .background(Color.Red)
+                                .fillMaxWidth()
+                                .height(56.dp)
+                                .pin(),
                     )
-                    DropdownMenu(
-                        modifier =
-                            Modifier
-                                .weight(1F),
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false },
-                    ) {
-                        cities.forEach { city ->
-                            DropdownMenuItem(
-                                text = { Text(text = city) },
-                                onClick = {
-                                    selectedCity = city
-                                    expanded = false
-                                },
-                            )
-                        }
+                    Column {
+                        TitleList()
+                        HidingList()
                     }
-                }
-                Icon(painter = painterResource(id = R.drawable.icon_qr_code), contentDescription = null)
+                },
+            ) {
+                ScrollingList()
             }
         }
     }

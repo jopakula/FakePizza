@@ -51,16 +51,16 @@ android {
 
 dependencies {
 
+    implementation("me.onebone:toolbar-compose:2.3.5")
+
     implementation("androidx.compose.material:material:1.4.2")
+    implementation(libs.material)
 
     val voyagerVersion = "1.0.0"
 
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
-
-//    implementation("cafe.adriel.voyager:voyager:1.0.0")
-//    implementation("cafe.adriel.voyager:extensions-compose:1.0.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
