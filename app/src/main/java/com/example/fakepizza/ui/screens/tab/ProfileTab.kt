@@ -7,8 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import com.example.fakepizza.R
 
 object ProfileTab : Tab {
     @Composable
@@ -25,12 +28,15 @@ object ProfileTab : Tab {
 
     override val options: TabOptions
         @Composable
-        get() =
-            remember {
+        get() {
+            val title = stringResource(id = R.string.person_title)
+            val icon = painterResource(id = R.drawable.icon_person)
+            return remember {
                 TabOptions(
                     index = 2u,
-                    title = "Profile",
-                    icon = null,
+                    title = title,
+                    icon = icon,
                 )
             }
+        }
 }

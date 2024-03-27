@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.fakepizza.data.http_client.HttpClient
+import com.example.fakepizza.ui.theme.SelectedColor
+import com.example.fakepizza.ui.theme.UnselectedColor
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
@@ -52,8 +54,8 @@ fun TabsList(onCategorySelected: (String) -> Unit) {
                         selectedTabIndex = index
                         onCategorySelected(tab)
                     },
-                    selectedContentColor = Color.Black,
-                    unselectedContentColor = Color.LightGray,
+                    selectedContentColor = SelectedColor,
+                    unselectedContentColor = UnselectedColor,
                     text = { Text(text = tab) },
                 )
             }

@@ -24,7 +24,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.fakepizza.R
 
 @Suppress("ktlint:standard:function-naming")
@@ -39,6 +42,7 @@ fun TitleList() {
             Modifier
                 .fillMaxWidth()
                 .height(56.dp),
+        verticalArrangement = Arrangement.Center,
     ) {
         Row(
             modifier =
@@ -52,6 +56,11 @@ fun TitleList() {
                 ClickableText(
                     text = AnnotatedString(selectedCity),
                     onClick = { expanded = true },
+                    style =
+                        TextStyle(
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.W400,
+                        ),
                 )
                 Icon(
                     modifier =

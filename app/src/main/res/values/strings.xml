@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Fake Pizza</string>
+    <string name="basket_title">Корзина</string>
+    <string name="food_title">Меню</string>
+    <string name="person_title">Профиль</string>
 </resources>

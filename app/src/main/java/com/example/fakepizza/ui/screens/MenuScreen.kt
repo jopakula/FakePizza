@@ -1,6 +1,7 @@
 package com.example.fakepizza.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -42,12 +43,14 @@ class MenuScreen : Screen {
                     Box(
                         modifier =
                             Modifier
-                                .background(Color.Red)
+                                .background(Color.White)
                                 .fillMaxWidth()
                                 .height(56.dp)
                                 .pin(),
                     )
-                    Column {
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                    ) {
                         TitleList()
                         HidingList()
                     }
