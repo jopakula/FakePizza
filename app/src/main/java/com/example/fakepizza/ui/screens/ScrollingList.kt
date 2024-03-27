@@ -19,7 +19,7 @@ import com.example.fakepizza.data.http_client.models.Meal
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
-fun ScrollingList() {
+fun ScrollingList(selectedCategory: String) {
     val scrollState = rememberLazyListState()
     var meals by remember { mutableStateOf(listOf<Meal>()) }
 
@@ -39,7 +39,8 @@ fun ScrollingList() {
         state = scrollState,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        items(meals) { meal ->
+        val filteredMeals = meals.filter { it.strCategory == selectedCategory }
+        items(filteredMeals) { meal ->
             MealCard(meal = meal)
         }
     }

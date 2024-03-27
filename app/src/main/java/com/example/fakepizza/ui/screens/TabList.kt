@@ -20,7 +20,7 @@ import com.example.fakepizza.data.http_client.HttpClient
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
-fun TabsList() {
+fun TabsList(onCategorySelected: (String) -> Unit) {
     var tabs by remember { mutableStateOf(listOf<String>()) }
     var selectedTabIndex by remember { mutableStateOf(0) }
 
@@ -48,7 +48,10 @@ fun TabsList() {
             tabs.forEachIndexed { index, tab ->
                 Tab(
                     selected = selectedTabIndex == index,
-                    onClick = { selectedTabIndex = index },
+                    onClick = {
+                        selectedTabIndex = index
+                        onCategorySelected(tab)
+                    },
                     selectedContentColor = Color.Black,
                     unselectedContentColor = Color.LightGray,
                     text = { Text(text = tab) },

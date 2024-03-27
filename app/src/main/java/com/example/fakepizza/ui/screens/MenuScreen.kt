@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -26,6 +30,7 @@ class MenuScreen : Screen {
                     .background(Color.LightGray),
         ) {
             val state = rememberCollapsingToolbarScaffoldState()
+            var selectedCategory by remember { mutableStateOf("") }
 
             CollapsingToolbarScaffold(
                 modifier =
@@ -48,8 +53,10 @@ class MenuScreen : Screen {
                     }
                 },
             ) {
-                TabsList()
-                ScrollingList()
+                TabsList(onCategorySelected = { category ->
+                    selectedCategory = category
+                })
+                ScrollingList(selectedCategory)
             }
         }
     }
