@@ -1,5 +1,6 @@
 package com.example.fakepizza.ui.screens
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.fakepizza.data.http_client.HttpClient
 import com.example.fakepizza.ui.theme.SelectedBackgroundColor
@@ -29,13 +31,19 @@ import com.example.fakepizza.ui.theme.UnselectedColor
 fun TabsList(onCategorySelected: (String) -> Unit) {
     var tabs by remember { mutableStateOf(listOf<String>()) }
     var selectedTabIndex by remember { mutableStateOf(0) }
-
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE)
     LaunchedEffect(Unit) {
         try {
             val response = HttpClient.api.getCategories()
             tabs = response.categories.map { it.strCategory }
+            with(sharedPreferences.edit()) {
+                putStringSet("tabs", tabs.toSet())
+                apply()
+            }
         } catch (e: Exception) {
             Log.e("TabsList", "Error$e")
+            tabs = sharedPreferences.getStringSet("tabs", emptySet())?.toList() ?: listOf()
         }
     }
 

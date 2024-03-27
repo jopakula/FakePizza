@@ -69,8 +69,6 @@ fun MealCard(meal: Meal) {
                         meal.strIngredient6,
                         meal.strIngredient7,
                         meal.strIngredient8,
-                        meal.strIngredient9,
-                        meal.strIngredient10,
                     ).joinToString(", ")
                 Text(
                     text = ingredients,
