@@ -1,4 +1,4 @@
-package com.example.fakepizza.ui.screens.tab
+package com.example.fakepizza.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,10 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import com.example.fakepizza.ui.screens.HidingList
-import com.example.fakepizza.ui.screens.ScrollingList
-import com.example.fakepizza.ui.screens.TabsList
-import com.example.fakepizza.ui.screens.TitleList
 import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ScrollStrategy
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
